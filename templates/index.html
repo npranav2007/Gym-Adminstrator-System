@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Gym Management System{% endblock %}
+
+{% block content %}
+<div class="row align-items-center">
+    <div class="col-md-6">
+        <h1 class="display-4 fw-bold">Gym Management System</h1>
+        <p class="lead">A simple and effective way to manage your gym members, track their progress, and handle membership plans.</p>
+        <hr class="my-4">
+        <p>This system helps you track fitness goals, calculate BMI, manage subscription plans, and communicate with your members via SMS.</p>
+        {% if not session.get('user_id') %}
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg px-4 me-md-2">Login</a>
+                <a href="{{ url_for('signup') }}" class="btn btn-outline-secondary btn-lg px-4">Sign Up</a>
+            </div>
+        {% else %}
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg px-4">Go to Dashboard</a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-6 text-center">
+        <!-- You could add an image here -->
+        <div class="bg-light p-5 rounded-3 shadow">
+            <h2>Features</h2>
+            <ul class="list-group list-group-flush text-start">
+                <li class="list-group-item bg-light">User authentication system</li>
+                <li class="list-group-item bg-light">Customer registration & management</li>
+                <li class="list-group-item bg-light">BMI & calorie calculation</li>
+                <li class="list-group-item bg-light">Membership plan management</li>
+                <li class="list-group-item bg-light">Email notifications</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

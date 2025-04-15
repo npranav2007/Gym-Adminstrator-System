@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Plan - Gym Management System{% endblock %}
+
+{% block content %}
+<div class="card shadow">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Add Membership Plan</h4>
+        <span class="badge bg-light text-dark">Customer: {{ customer.name }}</span>
+    </div>
+    <div class="card-body">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h5>Customer Details</h5>
+                <table class="table">
+                    <tr>
+                        <th>ID:</th>
+                        <td>{{ customer.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name:</th>
+                        <td>{{ customer.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile:</th>
+                        <td>{{ customer.mobile }}</td>
+                    </tr>
+                    <tr>
+                        <th>BMI:</th>
+                        <td>{{ customer.bmi }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Current Goal</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> {{ customer.goal|replace('_', ' ')|title }}</p>
+                        <p><strong>Current Weight:</strong> {{ customer.weight }} kg</p>
+                        <p><strong>Target Weight:</strong> {{ customer.target_weight }} kg</p>
+                        <p><strong>Daily Calories:</strong> {{ customer.daily_calories }} kcal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="plan_type" class="form-label">Membership Plan</label>
+                    <select class="form-select" id="plan_type" name="plan_type" required>
+                        <option value="">Select Plan</option>
+                        <option value="monthly">Monthly (30 days)</option>
+                        <option value="quarterly">Quarterly (90 days)</option>
+                        <option value="yearly">Yearly (365 days)</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="amount" class="form-label">Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-text">₹</span>
+                        <input type="number" class="form-control" id="amount" name="amount" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-info">
+                <p class="mb-0"><strong>Note:</strong> An Email will be sent to the customer with plan details, BMI, and calorie information.</p>
+            </div>
+            
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Add Plan & Send Email</button>
+                <a href="{{ url_for('customer_detail', customer_id=customer.id) }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

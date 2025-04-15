@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Customers - Gym Management System{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Customer Management</h2>
+    <a href="{{ url_for('add_customer') }}" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Add New Customer
+    </a>
+</div>
+
+{% if customers %}
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Customer List</h4>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>BMI</th>
+                            <th>Goal</th>
+                            <th>Plan Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer_id, customer in customers.items() %}
+                            <tr>
+                                <td>{{ customer.id }}</td>
+                                <td>{{ customer.name }}</td>
+                                <td>{{ customer.mobile }}</td>
+                                <td>{{ customer.bmi }}</td>
+                                <td>{{ customer.goal|replace('_', ' ')|title }}</td>
+                                <td>
+                                    {% if customer.plan_id %}
+                                        <span class="badge bg-success">Active</span>
+                                    {% else %}
+                                        <span class="badge bg-warning text-dark">No Plan</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('customer_detail', customer_id=customer.id) }}" class="btn btn-sm btn-info">View</a>
+                                    {% if not customer.plan_id %}
+                                        <a href="{{ url_for('add_plan', customer_id=customer.id) }}" class="btn btn-sm btn-primary">Add Plan</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        <p class="mb-0">No customers found. Add your first customer to get started!</p>
+    </div>
+{% endif %}
+{% endblock %}

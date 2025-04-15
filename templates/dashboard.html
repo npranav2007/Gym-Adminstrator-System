@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Gym Management System{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Dashboard</h2>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card bg-primary text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Total Customers</h5>
+                        <h2 class="display-4">{{ total_customers }}</h2>
+                    </div>
+                    <i class="bi bi-people-fill" style="font-size: 3rem;"></i>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a href="{{ url_for('customers') }}" class="text-white text-decoration-none">View Details</a>
+                <i class="bi bi-arrow-right text-white"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card bg-success text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Active Plans</h5>
+                        <h2 class="display-4">{{ active_plans }}</h2>
+                    </div>
+                    <i class="bi bi-calendar-check" style="font-size: 3rem;"></i>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a href="{{ url_for('customers') }}" class="text-white text-decoration-none">View Details</a>
+                <i class="bi bi-arrow-right text-white"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card bg-info text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Quick Actions</h5>
+                        <p class="card-text">Manage gym operations</p>
+                    </div>
+                    <i class="bi bi-lightning-charge" style="font-size: 3rem;"></i>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a href="{{ url_for('add_customer') }}" class="text-white text-decoration-none">Add New Customer</a>
+                <i class="bi bi-arrow-right text-white"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Gym Management System</h4>
+            </div>
+            <div class="card-body">
+                <h5>Welcome to your Gym Management Dashboard</h5>
+                <p>This simple system allows you to:</p>
+                <ul>
+                    <li>Register new customers and collect their details</li>
+                    <li>Calculate BMI and daily calorie requirements</li>
+                    <li>Create membership plans (monthly, quarterly, yearly)</li>
+                    <li>Send Email notifications to customers</li>
+                    <li>Track customer fitness goals</li>
+                </ul>
+                
+                <div class="d-grid gap-2 col-6 mx-auto mt-4">
+                    <a href="{{ url_for('customers') }}" class="btn btn-primary">
+                        <i class="bi bi-people-fill me-2"></i> Manage Customers
+                    </a>
+                    <a href="{{ url_for('add_customer') }}" class="btn btn-success">
+                        <i class="bi bi-person-plus-fill me-2"></i> Add New Customer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
