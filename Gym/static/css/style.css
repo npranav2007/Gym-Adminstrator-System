@@ -31,6 +31,7 @@ body {
     padding: 0.5rem 1rem;
 }
 
+/* Button colors */
 .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
@@ -51,11 +52,6 @@ body {
     border-color: #1e7e34;
 }
 
-/* Dashboard cards */
-.card-body .display-4 {
-    font-weight: 600;
-}
-
 /* Form styling */
 .form-control:focus {
     border-color: #80bdff;
@@ -67,10 +63,6 @@ body {
 }
 
 /* Navbar customization */
-.navbar-dark.bg-dark {
-    background-color: #343a40 !important;
-}
-
 .navbar-brand {
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -84,29 +76,4 @@ footer {
 /* Alert styling */
 .alert {
     border-radius: 0.3rem;
-}
-
-/* Customer detail page */
-.customer-detail-header {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-radius: 0.3rem;
-    margin-bottom: 1.5rem;
-}
-
-/* BMI color indicators */
-.bmi-underweight {
-    color: #ffc107;
-}
-
-.bmi-normal {
-    color: #28a745;
-}
-
-.bmi-overweight {
-    color: #fd7e14;
-}
-
-.bmi-obese {
-    color: #dc3545;
 }
